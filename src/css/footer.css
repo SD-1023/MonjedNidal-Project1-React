@@ -1,0 +1,9 @@
+footer {
+  position: sticky;
+  text-align: center;
+  color: var(--body-text);
+  padding: 1rem 0rem;
+}
+footer p {
+  margin: 0px;
+}

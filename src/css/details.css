@@ -1,0 +1,140 @@
+body {
+  background-color: var(--bg_body);
+}
+
+.navbar,
+.top {
+  background-color: var(--bg_default);
+}
+
+.topP {
+  color: var(--body-text);
+}
+
+.detailsContainer {
+  flex-direction: column;
+}
+
+.infoSection {
+  position: relative;
+  width: 100%;
+  background-color: #333333;
+  color: #ffffff;
+  padding: 1.5rem 0rem;
+  height: fit-content;
+}
+.infoContainer {
+  max-width: 920px;
+  margin: auto;
+}
+.info {
+  margin-right: 1.5rem;
+}
+.info .stars {
+  margin-top: 0px;
+}
+.topicDescription {
+  font-size: 17px;
+  max-width: 600px;
+  margin-bottom: 0px;
+}
+.topicCategory {
+  color: var(--brand-secondary);
+  font-size: 17px;
+}
+
+.detailsLanguage {
+  margin: 0px;
+}
+aside {
+  position: relative;
+  width: 300px;
+}
+.test {
+  position: absolute;
+  color: #333333;
+  background-color: var(--white-static);
+  height: fit-content;
+  border: 2px solid #ffffff;
+  z-index: 10;
+  box-shadow: var(--box-shadow);
+}
+.topicImg {
+  width: 300px;
+  height: 170px;
+}
+
+.asideInfo {
+  padding: 0.5rem 1rem;
+  padding-bottom: 1rem;
+  color: var(--dark-lines-color);
+}
+.asideInfo p {
+  margin: 0.6rem 0rem;
+}
+.devName {
+  color: var(--brand-primary);
+}
+.addToFavourites {
+  flex-direction: column;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--grey-border-color-static);
+}
+.addToFavButton {
+  font-size: 19px;
+  color: var(--white-static);
+  background-color: var(--brand-secondary);
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  border: none;
+}
+.addToFavButton:hover {
+  box-shadow: var(--box-shadow);
+  background-color: #06b276;
+}
+.addToFavButton .icon {
+  font-size: 30px;
+  padding: 0rem 0.5rem;
+}
+.unlimitedCreds {
+  margin-top: 0.6rem;
+  margin-bottom: 0.1rem;
+  text-align: center;
+  color: var(--grey);
+}
+
+.subTopicsContainer {
+  color: var(--body-text);
+  position: relative;
+}
+.subTopics {
+  position: relative;
+  margin-top: 2rem;
+  width: 590px;
+  background-color: var(--bg_default);
+  border: 1px solid var(--grey-border-color);
+}
+.subTopicsTitle {
+  margin: 0px;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid var(--grey-border-color);
+}
+.subTopicsList {
+  margin: 0px;
+  list-style-type: none;
+  padding-left: 0rem;
+}
+.subTopicsListItem {
+  padding: 1rem 2rem;
+  font-size: 17px;
+  border-bottom: 1px solid var(--grey-border-color);
+}
+.subTopicsListItem:last-child {
+  border-bottom: none;
+}
+.checkmarkIcon {
+  color: var(--brand-secondary);
+  font-size: 23px;
+  padding-right: 1rem;
+  flex-shrink: 0;
+}
