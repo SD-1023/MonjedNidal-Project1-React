@@ -21,9 +21,10 @@
 .navButtonIcon {
   color: var(--body-text);
   --ionicon-stroke-width: 40px;
-  margin-right: 5px;
 }
-
+.navButtonText {
+  margin-left: 5px;
+}
 .top {
   flex-direction: column;
   height: 10rem;
@@ -47,4 +48,10 @@
 .topP {
   font-size: 18px;
   color: var(--top-paragraph-color);
+}
+
+@media (max-width: 632px) {
+  .navButtonText {
+    display: none;
+  }
 }

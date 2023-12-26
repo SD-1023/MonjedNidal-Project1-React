@@ -27,7 +27,7 @@ function DetailsPage() {
       });
     };
     getDetails();
-  }, []);
+  }, [id]);
 
   return (
     <main className="detailsContainer align-center" id="detailsContainer">

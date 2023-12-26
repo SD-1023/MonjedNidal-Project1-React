@@ -1,6 +1,9 @@
 import "../../../css/favourites.css";
 import FavouriteTopic from "./FavouriteTopic";
-function FavouritesSection({ favouriteTopics, setFavouriteTopics }) {
+import { useContext } from "react";
+import { FavouritesContext } from "../../Contexts/FavouritesContext";
+function FavouritesSection() {
+  const { favouriteTopics, setFavouriteTopics } = useContext(FavouritesContext);
   return (
     <section className="favouritesSection container box-shadow">
       <h3 className="favouritesTitle">My Favourite Topics</h3>

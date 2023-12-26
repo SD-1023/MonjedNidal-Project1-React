@@ -21,6 +21,8 @@
 .favouriteTopic {
   border: var(--favourite-topic-border);
   list-style-type: none;
+  color: var(--body-text);
+  text-decoration: none;
 }
 .favouriteTopicImg {
   background-color: #ffffff;

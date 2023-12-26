@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import { FavouritesContext } from "../../../App";
+import { FavouritesContext } from "../../Contexts/FavouritesContext";
 
 function DetailsAside({ topicDetails }) {
   const IMAGE_PATH = `/assets/images/${topicDetails.image}`;
 
-  const { favouriteTopics, setFavouriteTopics, setToggleFavourites } =
+  const { favouriteTopics, handleFavouritesOperations } =
     useContext(FavouritesContext);
 
   const [isTopicFavourited, setIsTopicFavourited] = useState(
@@ -12,7 +12,6 @@ function DetailsAside({ topicDetails }) {
       (existingTopic) => existingTopic.topic === topicDetails.topic
     )
   );
-  console.log(isTopicFavourited);
 
   useEffect(() => {
     setIsTopicFavourited(
@@ -20,32 +19,7 @@ function DetailsAside({ topicDetails }) {
         (existingTopic) => existingTopic.topic === topicDetails.topic
       )
     );
-  }, [favouriteTopics]);
-  useEffect(() => {
-    setToggleFavourites(isTopicFavourited);
-  }, [isTopicFavourited, setToggleFavourites]);
-
-  const saveTopic = (existingFavourites, isFavourated) => {
-    setFavouriteTopics(existingFavourites);
-    localStorage.setItem("favourites", JSON.stringify(existingFavourites));
-    setIsTopicFavourited(isFavourated);
-  };
-
-  const handleAddFavouriteTopic = () => {
-    let existingFavourites =
-      JSON.parse(localStorage.getItem("favourites")) || [];
-
-    if (isTopicFavourited) {
-      // Remove from favorites
-      existingFavourites = existingFavourites.filter(
-        (item) => item.topic !== topicDetails.topic
-      );
-      saveTopic(existingFavourites, false);
-    } else {
-      existingFavourites.push(topicDetails);
-      saveTopic(existingFavourites, true);
-    }
-  };
+  }, [favouriteTopics, topicDetails.topic]);
 
   return (
     <aside>
@@ -62,7 +36,13 @@ function DetailsAside({ topicDetails }) {
             <p>Interested about this topic?</p>
             <button
               className="addToFavButton d-flex justify-center align-center"
-              onClick={handleAddFavouriteTopic}
+              onClick={() => {
+                handleFavouritesOperations(
+                  topicDetails,
+                  isTopicFavourited,
+                  setIsTopicFavourited
+                );
+              }}
             >
               {!isTopicFavourited
                 ? "Add to Favoutites"

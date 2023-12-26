@@ -1,6 +1,10 @@
+import { Link } from "react-router-dom";
 function FavouriteTopic({ topic }) {
   return (
-    <li className="favouriteTopic rounded box-shadow">
+    <Link
+      to={`/details/${topic.id}`}
+      className="favouriteTopic rounded box-shadow"
+    >
       <img
         className="favouriteTopicImg"
         src={`/assets/images/${topic.image}`}
@@ -17,9 +21,15 @@ function FavouriteTopic({ topic }) {
             <ion-icon class="star" name="star-outline"></ion-icon>
           </div>
         </div>
-        <ion-icon class="removeIcon" name="heart-dislike-outline"></ion-icon>
+        {/* <div
+          onClick={() => {
+            handleRemoveTopic();
+          }}
+        >
+          <ion-icon class="removeIcon" name="heart-dislike-outline"></ion-icon>
+        </div> */}
       </div>
-    </li>
+    </Link>
   );
 }
 

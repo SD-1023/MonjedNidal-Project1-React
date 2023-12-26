@@ -21,7 +21,10 @@ function SubTopics({ topicDetails, leftSpace, width }) {
             const subTopics = [];
             for (let sub in topicDetails.subtopics) {
               subTopics.push(
-                <SubTopic subtopic={topicDetails.subtopics[sub]} />
+                <SubTopic
+                  key={topicDetails.subtopics[sub]}
+                  subtopic={topicDetails.subtopics[sub]}
+                />
               );
             }
             return subTopics;

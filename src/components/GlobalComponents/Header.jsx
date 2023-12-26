@@ -1,28 +1,15 @@
-import { useState, useContext } from "react";
-import { FavouritesContext } from "../../App";
+import { useContext } from "react";
+import { FavouritesContext } from "../Contexts/FavouritesContext";
 import ThemeContext from "../Contexts/ThemeContext";
 import "../../css/header.css";
 import { Link } from "react-router-dom";
 
 function Header() {
   const { toggleTheme } = useContext(ThemeContext);
-  const {
-    favouriteTopics,
-    setFavouriteTopics,
-    toggleFavourites,
-    setToggleFavourites,
-  } = useContext(FavouritesContext);
+  const { handleToggleFavourites } =
+    useContext(FavouritesContext);
 
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-  window.addEventListener("resize", () => {
-    setScreenWidth(window.innerWidth);
-  });
 
-  const handleToggleFavourites = () => {
-    if (favouriteTopics) {
-      setToggleFavourites(!toggleFavourites);
-    }
-  };
 
   return (
     <>
@@ -39,9 +26,7 @@ function Header() {
             }}
           >
             <ion-icon class="navButtonIcon icon" name="moon-outline"></ion-icon>
-            <span className="navButtonText">
-              {screenWidth >= 632 ? "Dark Mode" : ""}
-            </span>
+            <span className="navButtonText">Dark Mode</span>
           </span>
           <span
             className="navListButton d-flex align-center decoration-none"
@@ -52,9 +37,7 @@ function Header() {
               class="navButtonIcon icon"
               name="heart-outline"
             ></ion-icon>
-            <span className="navButtonText">
-              {screenWidth >= 632 ? "Favourites" : ""}
-            </span>
+            <span className="navButtonText">Favourites</span>
           </span>
         </div>
       </header>
