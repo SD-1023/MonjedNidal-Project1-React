@@ -9,3 +9,26 @@ export const httpRequest = async (path) => {
     console.error("HTTP request error:", error);
   }
 };
+
+// import { useState, useEffect } from "react";
+
+// const useHttpRequest = (path) => {
+//   const [data, setData] = useState(null);
+//   const [error, setError] = useState(null);
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       try {
+//         const response = await fetch(`${API_ENDPOINT}${path}`);
+//         const result = await response.json();
+//         setData(result);
+//       } catch (error) {
+//         setError(error);
+//       }
+//     };
+
+//     fetchData();
+//   }, [path]);
+
+//   return { data, error };
+// };

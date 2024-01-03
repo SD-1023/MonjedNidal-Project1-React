@@ -1,26 +1,30 @@
 import { useContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ThemeContext from "./Contexts/ThemeContext";
-import { FavouritesContext } from "./Contexts/FavouritesContext";
-import Header from "./GlobalComponents/Header";
+import { useFavourites } from "./Contexts/FavouritesContext";
+import Header from "./GlobalComponents/Header/Header";
 import FavouritesSection from "./GlobalComponents/Favourites/FavouritesSection";
 import HomePage from "./HomePage/HomePage";
 import Footer from "./GlobalComponents/Footer";
-import "../css/constants.css";
-import "../css/App.css";
 import DetailsPage from "./DetailsPage/DetailsPage";
+import styled from "styled-components";
+
+const StyledMainContainer = styled.div`
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--bg_body);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
 
 function MainContainer() {
   const { theme } = useContext(ThemeContext);
-  const { toggleFavourites, favouriteTopics } = useContext(FavouritesContext);
+  const { toggleFavourites } = useFavourites();
 
   return (
     <BrowserRouter>
-      <div
-        className={`App d-flex flex-column justify-between ${
-          theme === "dark" ? "dark" : ""
-        }`}
-      >
+      <StyledMainContainer className={`${theme === "dark" ? "dark" : ""}`}>
         <div>
           <Header />
           <Routes>
@@ -28,10 +32,9 @@ function MainContainer() {
             <Route path="/details/:id" element={<DetailsPage />} />
           </Routes>
         </div>
-
         <Footer />
-        {toggleFavourites && favouriteTopics ? <FavouritesSection /> : ""}
-      </div>
+        {toggleFavourites ? <FavouritesSection /> : ""}
+      </StyledMainContainer>
     </BrowserRouter>
   );
 }

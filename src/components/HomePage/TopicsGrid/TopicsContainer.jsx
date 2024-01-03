@@ -1,23 +1,22 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { httpRequest } from "../../../apiFetches";
-import { SearchFilterContext } from "../../Contexts/SearchFilterContext";
-import TopicCard from "./TopicCard";
+import { useSearchContext } from "../../Contexts/SearchFilterContext";
+import TopicCard from "./TopicCard/TopicCard";
+import { TopicsTitle, TopicsGrid } from "./TopicsContainerStyles";
 
-function TopicsContainer(props) {
-  const { topicsData, setTopicsData } = props;
-  const { searchTerm, sortCriteria, selectedFilter } =
-    useContext(SearchFilterContext);
+function TopicsContainer({ topicsData, setTopicsData }) {
+  const { searchTerm, sortCriteria, selectedFilter } = useSearchContext();
 
   useEffect(() => {
     const timeoutId = setTimeout(async () => {
       await httpRequest(`/list?phrase=${searchTerm}`).then(
         (updatedTopicsData) => {
           setTopicsData(updatedTopicsData);
-        }
+        },
+        300
       );
-    }, 300);
-
-    return () => clearTimeout(timeoutId);
+      return () => clearTimeout(timeoutId);
+    });
   }, [searchTerm, setTopicsData]);
 
   const filteredData = topicsData.filter((item) => {
@@ -37,16 +36,13 @@ function TopicsContainer(props) {
 
   return (
     <>
-      <h2 className="topicsTitle container">
-        <span id="topicsCounter">
-          {sortedData[0] ? sortedData.length : "No"}
-        </span>{" "}
-        Web Topics Found
-      </h2>
-      <section className="topics container" id="topicsContainer">
+      <TopicsTitle>
+        {sortedData[0] ? `"${sortedData.length}"` : "No"} Web Topics Found
+      </TopicsTitle>
+      <TopicsGrid>
         {sortedData &&
           sortedData.map((topic) => <TopicCard topic={topic} key={topic.id} />)}
-      </section>
+      </TopicsGrid>
     </>
   );
 }

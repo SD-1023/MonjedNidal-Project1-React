@@ -4,7 +4,7 @@ import { httpRequest } from "../../apiFetches";
 import FormSection from "./FormSection/FormSection";
 import TopicsContainer from "./TopicsGrid/TopicsContainer";
 import ErrorPage from "../GlobalComponents/ErrorPage";
-import Loader from "../GlobalComponents/Loader";
+import Loader from "../GlobalComponents/Loader/Loader";
 
 function HomePage() {
   const [topicsData, setTopicsData] = useState([]);
@@ -12,12 +12,11 @@ function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const getTopicsData = async () => {
-      const data = await httpRequest("/list");
+    const getTopicsData = () => {
+      const data = httpRequest("/list");
       setIsLoading(false);
       return data;
     };
-
     getTopicsData().then((data) => {
       if (data) {
         setTopicsData(data);
@@ -31,16 +30,12 @@ function HomePage() {
       {isLoading ? (
         <Loader />
       ) : !showErrorPage ? (
-        <main className="homeMain">
-          (
-          <>
-            <FormSection topicsData={topicsData} />
-            <TopicsContainer
-              topicsData={topicsData}
-              setTopicsData={setTopicsData}
-            />
-          </>
-          )
+        <main>
+          <FormSection topicsData={topicsData} />
+          <TopicsContainer
+            topicsData={topicsData}
+            setTopicsData={setTopicsData}
+          />
         </main>
       ) : (
         <ErrorPage

@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 const SearchFilterContext = createContext({
   searchTerm: "",
@@ -33,4 +33,8 @@ const SearchFilterProvider = ({ children }) => {
   );
 };
 
-export { SearchFilterContext, SearchFilterProvider };
+const useSearchContext = () => {
+  return useContext(SearchFilterContext);
+};
+
+export { useSearchContext, SearchFilterProvider };

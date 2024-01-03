@@ -1,10 +1,9 @@
-import React, { useContext } from "react";
-import { SearchFilterContext } from "../../Contexts/SearchFilterContext";
-
+import { useSearchContext } from "../../../Contexts/SearchFilterContext";
+import { SelectContainer, SelectLabel, StyledSelect } from "./SelectStyles";
 function Select(props) {
-  let { label, options, className, id, defaultHidden, type } = props;
+  let { label, options, noBorder, id, defaultHidden, type } = props;
   const { sortCriteria, selectedFilter, setSortCriteria, setSelectedFilter } =
-    useContext(SearchFilterContext);
+    useSearchContext();
 
   const handleChange = (event) => {
     if (type === "sort") {
@@ -19,10 +18,9 @@ function Select(props) {
   };
 
   return (
-    <div className={`selectInput ${className}`}>
-      <label>{label}</label>
-      <select
-        className="styled-select text-overflow"
+    <SelectContainer noBorder={noBorder}>
+      <SelectLabel>{label}</SelectLabel>
+      <StyledSelect
         value={type === "sort" ? sortCriteria : selectedFilter}
         onChange={handleChange}
         id={id}
@@ -35,8 +33,8 @@ function Select(props) {
             {option.option}
           </option>
         ))}
-      </select>
-    </div>
+      </StyledSelect>
+    </SelectContainer>
   );
 }
 

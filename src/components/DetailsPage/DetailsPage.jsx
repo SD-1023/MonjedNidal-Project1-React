@@ -1,51 +1,45 @@
 import { useEffect, useState } from "react";
-import "../../css/details.css";
-import "../../css/detailsMediaQueries.css";
-import InfoSection from "./InfoSection";
+import InfoSection from "./InfoSection/InfoSection";
 import SubTopics from "./SubTopics/SubTopics";
 import { useParams } from "react-router-dom";
 import { httpRequest } from "../../apiFetches";
+import ErrorPage from "../GlobalComponents/ErrorPage";
+import Loader from "../GlobalComponents/Loader/Loader";
 
 function DetailsPage() {
   const { id } = useParams();
   const [topicDetails, setTopicDetails] = useState({});
-  const [leftSpace, setLeftSpace] = useState(0);
-  const [width, setWidth] = useState(0);
-
-  useEffect(() => {
-    setLeftSpace(leftSpace);
-  }, [leftSpace]);
-
-  useEffect(() => {
-    setWidth(width);
-  }, [width]);
+  const [showErrorPage, setShowErrorPage] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getDetails = async () => {
       await httpRequest(`/details/${id}`).then((data) => {
         setTopicDetails(data);
+        setIsLoading(false);
+        if (!data) {
+          setShowErrorPage(true);
+        }
       });
     };
     getDetails();
   }, [id]);
 
   return (
-    <main className="detailsContainer align-center" id="detailsContainer">
-      {topicDetails ? (
+    <main>
+      {isLoading ? (
+        <Loader />
+      ) : !showErrorPage ? (
         <>
-          <InfoSection
-            topicDetails={topicDetails}
-            setLeftSpace={setLeftSpace}
-            setWidth={setWidth}
-          />
-          <SubTopics
-            topicDetails={topicDetails}
-            leftSpace={leftSpace}
-            width={width}
-          />
+          <InfoSection topicDetails={topicDetails} />
+          <SubTopics topicDetails={topicDetails} />
         </>
       ) : (
-        ""
+        <ErrorPage
+          errorMsg={"Loading Details Faild!"}
+          btnText={"Back to home page"}
+          href={"/"}
+        />
       )}
     </main>
   );

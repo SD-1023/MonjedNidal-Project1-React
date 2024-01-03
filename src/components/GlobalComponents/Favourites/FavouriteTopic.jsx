@@ -1,35 +1,26 @@
-import { Link } from "react-router-dom";
+import {
+  StyledFavouriteTopic,
+  FavouriteTopicImg,
+  FavouriteTopicInfo,
+  FavouriteTopicTitle,
+} from "./FavouritesStyles";
+import Stars from "../Stars/Stars";
+
 function FavouriteTopic({ topic }) {
   return (
-    <Link
-      to={`/details/${topic.id}`}
-      className="favouriteTopic rounded box-shadow"
-    >
-      <img
+    <StyledFavouriteTopic to={`/details/${topic.id}`}>
+      <FavouriteTopicImg
         className="favouriteTopicImg"
         src={`/assets/images/${topic.image}`}
         alt={`${topic.topic}`}
       />
-      <div className="favouriteTopicInfo">
-        <div>
-          <h4 className="favouriteTopicTitle text-overflow">{topic.topic}</h4>
-          <div className="stars favouriteTopicStars d-flex align-center">
-            <ion-icon class="star" name="star"></ion-icon>
-            <ion-icon class="star" name="star"></ion-icon>
-            <ion-icon class="star" name="star"></ion-icon>
-            <ion-icon class="star" name="star"></ion-icon>
-            <ion-icon class="star" name="star-outline"></ion-icon>
-          </div>
-        </div>
-        {/* <div
-          onClick={() => {
-            handleRemoveTopic();
-          }}
-        >
-          <ion-icon class="removeIcon" name="heart-dislike-outline"></ion-icon>
-        </div> */}
-      </div>
-    </Link>
+      <FavouriteTopicInfo>
+        <FavouriteTopicTitle className="text-overflow">
+          {topic.topic}
+        </FavouriteTopicTitle>
+        <Stars rating={topic.rating} />
+      </FavouriteTopicInfo>
+    </StyledFavouriteTopic>
   );
 }
 

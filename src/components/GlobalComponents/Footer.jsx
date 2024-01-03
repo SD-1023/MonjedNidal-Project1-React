@@ -1,13 +1,30 @@
-import "../../css/footer.css";
+import styled from "styled-components";
 
+const StyledFooter = styled.footer`
+  position: sticky;
+  text-align: center;
+  color: var(--body-text);
+`;
+
+const FooterContent = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-block: 1rem;
+`;
+const FooterIcon = styled("ion-icon")`
+  padding: 0rem 0.2rem;
+  font-size: 22px;
+  color: var(--heart-color);
+`;
 function Footer() {
   return (
-    <footer>
-      <p className="d-flex align-center justify-center">
+    <StyledFooter>
+      <FooterContent>
         Developed with
-        <ion-icon class="filledHeart" name="heart"></ion-icon> © 2023
-      </p>
-    </footer>
+        <FooterIcon name="heart"></FooterIcon> © 2023
+      </FooterContent>
+    </StyledFooter>
   );
 }
 

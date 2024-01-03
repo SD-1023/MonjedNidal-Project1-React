@@ -1,18 +1,26 @@
-import "../../../css/favourites.css";
 import FavouriteTopic from "./FavouriteTopic";
-import { useContext } from "react";
-import { FavouritesContext } from "../../Contexts/FavouritesContext";
+import { useFavourites } from "../../Contexts/FavouritesContext";
+import {
+  FavouritesContainer,
+  FavouritesTitle,
+  FavouriteTopicsList,
+} from "./FavouritesStyles";
+
 function FavouritesSection() {
-  const { favouriteTopics, setFavouriteTopics } = useContext(FavouritesContext);
+  const { favouriteTopics } = useFavourites();
   return (
-    <section className="favouritesSection container box-shadow">
-      <h3 className="favouritesTitle">My Favourite Topics</h3>
-      <ul className="favouriteTopicsList">
+    <FavouritesContainer className="box-shadow">
+      <FavouritesTitle>
+        {favouriteTopics.length
+          ? "My Favourite Topics"
+          : "No Favourite Topics Yet!"}
+      </FavouritesTitle>
+      <FavouriteTopicsList>
         {favouriteTopics.map((topic) => (
           <FavouriteTopic topic={topic} key={topic.id} />
         ))}
-      </ul>
-    </section>
+      </FavouriteTopicsList>
+    </FavouritesContainer>
   );
 }
 
