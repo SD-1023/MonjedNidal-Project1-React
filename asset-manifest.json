@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/MonjedNidal-Project1-React/static/css/main.1de7b53f.css",
-    "main.js": "/MonjedNidal-Project1-React/static/js/main.b976d2f0.js",
+    "main.js": "/MonjedNidal-Project1-React/static/js/main.f67b99cd.js",
     "index.html": "/MonjedNidal-Project1-React/index.html",
     "main.1de7b53f.css.map": "/MonjedNidal-Project1-React/static/css/main.1de7b53f.css.map",
-    "main.b976d2f0.js.map": "/MonjedNidal-Project1-React/static/js/main.b976d2f0.js.map"
+    "main.f67b99cd.js.map": "/MonjedNidal-Project1-React/static/js/main.f67b99cd.js.map"
   },
   "entrypoints": [
     "static/css/main.1de7b53f.css",
-    "static/js/main.b976d2f0.js"
+    "static/js/main.f67b99cd.js"
   ]
 }
