@@ -1,7 +1,7 @@
 import { useSearchContext } from "../../../Contexts/SearchFilterContext";
 import { SelectContainer, SelectLabel, StyledSelect } from "./SelectStyles";
 function Select(props) {
-  let { label, options, noBorder, id, defaultHidden, type } = props;
+  let { label, options, noborder, id, defaultHidden, type } = props;
   const { sortCriteria, selectedFilter, setSortCriteria, setSelectedFilter } =
     useSearchContext();
 
@@ -18,7 +18,7 @@ function Select(props) {
   };
 
   return (
-    <SelectContainer noBorder={noBorder}>
+    <SelectContainer noborder={noborder}>
       <SelectLabel>{label}</SelectLabel>
       <StyledSelect
         value={type === "sort" ? sortCriteria : selectedFilter}

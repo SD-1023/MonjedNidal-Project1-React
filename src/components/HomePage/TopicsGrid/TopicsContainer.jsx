@@ -19,7 +19,7 @@ function TopicsContainer({ topicsData, setTopicsData }) {
     });
   }, [searchTerm, setTopicsData]);
 
-  const filteredData = topicsData.filter((item) => {
+  const filteredData = topicsData?.filter((item) => {
     if (selectedFilter) {
       return item.category === selectedFilter;
     } else {
@@ -27,7 +27,7 @@ function TopicsContainer({ topicsData, setTopicsData }) {
     }
   });
 
-  const sortedData = filteredData.sort((a, b) => {
+  const sortedData = filteredData?.sort((a, b) => {
     if (sortCriteria) {
       return a[sortCriteria].localeCompare(b[sortCriteria]);
     }

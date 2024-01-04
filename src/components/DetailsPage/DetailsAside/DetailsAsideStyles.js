@@ -20,7 +20,7 @@ export const Aside = styled.aside`
   box-shadow: var(--box-shadow);
   margin-left: 1.5rem;
 
-  @media (max-width: 1010px) {
+  @media (max-width: 1024px) {
     position: static;
   }
   @media (max-width: 632px) {

@@ -4,8 +4,8 @@ export const SelectContainer = styled.div`
   padding: 0.2rem 0.5rem;
   width: 100%;
   overflow-x: hidden;
-  border-right: ${(props) => {
-    if (props.noBorder) return "none";
+  border-right: ${({ noBorder }) => {
+    if (noBorder) return "none";
     else return `1px solid var(--grey-border-color)`;
   }};
   @media (max-width: 632px) {

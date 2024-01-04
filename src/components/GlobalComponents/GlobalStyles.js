@@ -9,7 +9,4 @@ export const Container = styled.div`
   @media (max-width: 770px) {
     padding: 0.3rem 2rem;
   }
-  @media (max-width: 632px) {
-    padding: 0.3rem 1rem;
-  }
 `;

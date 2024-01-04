@@ -70,7 +70,7 @@ function FormSection(props) {
               { option: "Author Name", value: "name" },
             ]}
             type="sort"
-            noBorder={false}
+            noborder={false}
           />
           <Select
             label="Filter by:"
@@ -79,7 +79,7 @@ function FormSection(props) {
             defaultHidden={false}
             options={filters}
             type="filter"
-            noBorder={true}
+            noborder={true}
           />
         </SelectsContainer>
       </Form>
