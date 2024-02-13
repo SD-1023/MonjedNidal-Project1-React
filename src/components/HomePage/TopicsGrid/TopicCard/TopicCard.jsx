@@ -5,7 +5,8 @@ import {
   TopicCardBody,
   TopicCategory,
   TopicLanguage,
-  TopicAuthor,StarsContainer
+  TopicAuthor,
+  StarsContainer,
 } from "../TopicCardStyles";
 
 function TopicCard(props) {
@@ -13,7 +14,7 @@ function TopicCard(props) {
   return (
     <StyledTopicCard to={`/details/${topic.id}`}>
       <TopicCardImage
-        src={`/assets/images/${topic.image}`}
+        src={`/MonjedNidal-Project1-React/assets/images/${topic.image}`}
         alt={`${topic.topic}`}
       />
       <TopicCardBody>
