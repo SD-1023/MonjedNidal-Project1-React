@@ -11,7 +11,7 @@ function FavouriteTopic({ topic }) {
     <StyledFavouriteTopic to={`/details/${topic.id}`}>
       <FavouriteTopicImg
         className="favouriteTopicImg"
-        src={`/assets/images/${topic.image}`}
+        src={`/MonjedNidal-Project1-React/assets/images/${topic.image}`}
         alt={`${topic.topic}`}
       />
       <FavouriteTopicInfo>

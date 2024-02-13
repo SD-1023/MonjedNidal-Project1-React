@@ -13,7 +13,7 @@ import {
 } from "./DetailsAsideStyles";
 
 function DetailsAside({ topicDetails }) {
-  const IMAGE_PATH = `/assets/images/${topicDetails.image}`;
+  const IMAGE_PATH = `/MonjedNidal-Project1-React/assets/images/${topicDetails.image}`;
   const { isFavouratedTopic, addToFavourates, removeFromFavourates } =
     useFavourites();
   const [isFavourated, setIsFavourated] = useState(

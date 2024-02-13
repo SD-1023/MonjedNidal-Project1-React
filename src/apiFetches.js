@@ -1,11 +1,16 @@
 // import { useState, useEffect } from "react";
 
 const API_ENDPOINT = "https://tap-web-1.herokuapp.com/topics";
-
+const cach = {};
 export const httpRequest = async (path) => {
   try {
+    if (cach[path]) {
+      console.log("cached : ", cach[path]);
+      return cach[path];
+    }
     const response = await fetch(`${API_ENDPOINT}${path}`);
     const data = await response.json();
+    cach[path] = data;
     return data;
   } catch (error) {
     console.error("HTTP request error:", error);

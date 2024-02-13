@@ -8,15 +8,13 @@ function TopicsContainer({ topicsData, setTopicsData }) {
   const { searchTerm, sortCriteria, selectedFilter } = useSearchContext();
 
   useEffect(() => {
-    const timeoutId = setTimeout(async () => {
-      await httpRequest(`/list?phrase=${searchTerm}`).then(
-        (updatedTopicsData) => {
-          setTopicsData(updatedTopicsData);
-        },
-        300
-      );
-      return () => clearTimeout(timeoutId);
-    });
+    const timeoutId = setTimeout(() => {
+      httpRequest(`/list?phrase=${searchTerm}`).then((updatedTopicsData) => {
+        setTopicsData(updatedTopicsData);
+      });
+    }, 300);
+
+    return () => clearTimeout(timeoutId);
   }, [searchTerm, setTopicsData]);
 
   const filteredData = topicsData?.filter((item) => {

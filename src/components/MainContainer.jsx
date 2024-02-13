@@ -23,7 +23,7 @@ function MainContainer() {
   const { toggleFavourites } = useFavourites();
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/MonjedNidal-Project1-React/">
       <StyledMainContainer className={`${theme === "dark" ? "dark" : ""}`}>
         <div>
           <Header />

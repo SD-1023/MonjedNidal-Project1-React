@@ -24,7 +24,7 @@ export const TopSection = styled.section`
   justify-content: center;
   flex-direction: column;
   height: 10rem;
-  background-image: url("/assets/desktop-top-background.svg");
+  background-image: url("/MonjedNidal-Project1-React/assets/desktop-top-background.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-color: var(--white);
@@ -32,7 +32,7 @@ export const TopSection = styled.section`
     background-size: cover;
   }
   @media (max-width: 720px) {
-    background-image: url("/assets/mobile-top-background.svg");
+    background-image: url("/MonjedNidal-Project1-React/assets/mobile-top-background.svg");
   }
   @media (max-width: 632px) {
     height: 8rem;

@@ -34,7 +34,6 @@ let filters = [];
 function FormSection(props) {
   const { topicsData } = props;
   const [filteredTopics, setFilteredTopics] = useState(topicsData);
-
   useEffect(() => {
     function getAndLoadCategoris(topics) {
       let categories = [];
@@ -50,7 +49,7 @@ function FormSection(props) {
       }
     }
     getAndLoadCategoris(topicsData);
-  }, [topicsData]);
+  }, [filteredTopics, topicsData]);
 
   return (
     <Container>
